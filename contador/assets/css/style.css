@@ -78,5 +78,6 @@ form button:hover {
 /* Timer Styles */
 .pause {
     color: rgb(170, 36, 36);
+    font-weight: bold;
 }
 
