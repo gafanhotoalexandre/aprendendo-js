@@ -29,6 +29,8 @@ function createTask(task) {
     tasks.appendChild(li);
     clearInput();
     createDeleteButton(li);
+
+    saveTasks();
 }
 
 function clearInput() {
@@ -53,5 +55,32 @@ document.addEventListener('click', (event) => {
 
     if (el.classList.contains('delete')) {
         el.parentElement.remove();
+        saveTasks();
     }
 });
+
+
+function saveTasks() {
+    const liTasks = tasks.querySelectorAll('li');
+    const tasksList = [];
+
+    for (let task of liTasks) {
+        let textTask = task.innerText;
+        textTask = textTask.replace('Apagar', '').trim();
+         
+        tasksList.push(textTask);
+    }
+
+    const tasksJson = JSON.stringify(tasksList);
+    localStorage.setItem('tasks', tasksJson);
+}
+
+function getSavedTasks() {
+    const tasksJson = localStorage.getItem('tasks');
+    const tasksList = JSON.parse(tasksJson);
+
+    for (let task of tasksList) {
+        createTask(task);
+    }
+}
+getSavedTasks();
