@@ -76,7 +76,11 @@ form button:hover {
 
 
 /* Calculator Styles */
+h1 {
+    text-align: center;
+}
 .calculator {
+    margin: auto;
     width:  400px;
 }
 
