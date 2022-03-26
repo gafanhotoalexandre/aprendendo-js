@@ -20,7 +20,7 @@ function createCalculator() {
             try {
                 count = eval(count);
 
-                if (! count) {
+                if (! count && count !== 0) {
                     alert('Conta inválida!');
                     return;
                 }
