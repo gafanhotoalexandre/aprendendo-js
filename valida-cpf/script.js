@@ -21,12 +21,14 @@ CPFValidate.prototype.createDigit = function (parcialCPF) {
     const cpfArray = Array.from(parcialCPF);
 
     let regressive = cpfArray.length + 1;
-    let digit = cpfArray.reduce((ac, val) => {
-        ac += regressive * Number(val);
-        console.log(val, regressive, regressive * val);
+    const total = cpfArray.reduce((accumulator, value) => {
+        accumulator += regressive * Number(value);
+        console.log(value, regressive, regressive * value);
         regressive--;
-        return ac;
-    });
+        return accumulator;
+    }, 0);
+
+    const digit = 11 - (total % 11);
 
     console.log(digit);
 };
