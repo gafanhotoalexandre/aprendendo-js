@@ -20,7 +20,7 @@
             <li>Senha precisa ter entre 6 e 12 caracteres</li>
         </ul>
 
-        <form action="/" method="post" id="main-form">
+        <form action="" method="post" id="main-form">
             <label for="">Nome:</label>
             <input type="text" name="name" id="name" class="validate">
 
@@ -31,18 +31,19 @@
             <input type="text" name="cpf" id="cpf" class="validate">
 
             <label for="">Usuário:</label>
-            <input type="email" name="email" id="email" class="validate">
+            <input type="text" name="username" id="username" class="validate">
 
             <label for="">Senha:</label>
-            <input type="text" name="password" id="password" class="validate">
+            <input type="password" name="password" id="password" class="validate">
 
             <label for="">Confirme sua Senha:</label>
-            <input type="text" name="password_confirmation" id="password_confirmation" class="validate">
+            <input type="password" name="password_confirmation" id="password-confirmation" class="validate">
 
             <button type="submit">Enviar</button>
         </form>
     </section>
 
+    <script src="./assets/js/cpfValidate.js"></script>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>

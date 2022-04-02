@@ -110,3 +110,10 @@ h1 {
 .btn-eq:hover {
     background-color: var(--primary-color-darker);
 }
+
+/* Form Validate */
+.error-message {
+    font-size: .8rem;
+    font-weight: bold;
+    color: red;
+}
