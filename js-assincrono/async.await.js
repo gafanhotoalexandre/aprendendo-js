@@ -17,13 +17,25 @@ function waitForIt(message, time) {
 }
 
 const execute = async () => {
-    const phrase1 = await waitForIt('Primeira frase', rand(1, 3));
-    console.log(phrase1);
+    try {
+        const phrase1 = await waitForIt('Primeira frase', rand(1, 3));
+        console.log(phrase1);
 
-    const phrase2 = await waitForIt('Segunda frase', rand(1, 3));
-    console.log(phrase2);
+        const phrase2 = await waitForIt('Segunda frase', rand(1, 3));
+        console.log(phrase2);
 
-    const phrase3 = waitForIt('Terceira frase', rand(1, 3))
-        .then(response => console.log(response));
+        const phrase3 = await waitForIt('Terceira frase', rand(1, 3));
+        console.log(phrase3);
+    } catch (error) {
+        console.log('Erro:', error);
+    }
 }
 execute();
+
+/**
+ * Promises
+ * 
+ * pending -> pendente
+ * fulfilled -> resolvida
+ * rejected -> rejeitada
+ */
