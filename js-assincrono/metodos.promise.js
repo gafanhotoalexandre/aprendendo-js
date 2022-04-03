@@ -6,12 +6,11 @@ const rand = (min, max) => {
 
 function waitForIt(message, time) {
     return new Promise((resolve, reject) => {
-        if (typeof message !== 'string') {
-            reject('BAD VALUE');
-            return;
-        }
-
         setTimeout(() => {
+            if (typeof message !== 'string') {
+                reject('BAD VALUE');
+                return;
+            }
             resolve(message);
         }, time);
     })
@@ -19,13 +18,14 @@ function waitForIt(message, time) {
 
 // Promise.all() | Promise.race() | Promise.resolve() | Promise.reject()
 const promises = [
-    'Primeiro valor',
-    waitForIt('Primeira Promise', 3),
-    waitForIt('Segunda Promise', .5),
-    waitForIt('Terceira Promise', 1),
-    'Outro Valor'
+    // 'Primeiro valor',
+    waitForIt('Primeira Promise', rand(1, 3)),
+    waitForIt('Segunda Promise', rand(1, 3)),
+    waitForIt('Terceira Promise', rand(1, 3)),
+    waitForIt(100, rand(1, 3))
+    // 'Outro Valor'
 ];
 
-Promise.all(promises)
+Promise.race(promises)
     .then(value => console.log(value))
     .catch(error => console.log('Erro:', error));
