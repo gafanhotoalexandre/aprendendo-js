@@ -125,12 +125,17 @@ h1 {
     color: red;
 }
 
-/* Axios */
-table,
-table tr,
-table tr td {
-    width: 100%;
+/* CPF Generator */
+.container h1 {
+    text-align: center;
+    margin-bottom: 40px;
 }
-table tr td {
-    padding: 5px;
+
+#result {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 20px;
 }
