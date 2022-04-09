@@ -1,6 +1,4 @@
-const { lastname, User } = require('./mod1.js');
-const p1 = new User('Alexandre');
+const Dog = require('./mod1');
 
-p1.lastname = lastname;
-
-console.log(p1);
+const doggy = new Dog('Paco');
+doggy.bark();

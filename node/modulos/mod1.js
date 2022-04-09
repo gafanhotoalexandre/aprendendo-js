@@ -1,11 +1,9 @@
-class User {
+module.exports = class Dog {
     constructor(name) {
         this.name = name;
     }
-}
 
-const lastname = 'Martins';
-
-module.exports = {
-    lastname, User
+    bark() {
+        console.log(`${this.name} está fazendo au au`);
+    }
 }
