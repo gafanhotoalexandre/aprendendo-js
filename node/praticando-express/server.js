@@ -2,21 +2,22 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Minha primeira mensagem.');
-});
+app.use(
+    express.urlencoded({ extended: true })
+);
 
-app.get('/contact', (req, res) => {
+app.get('/', (req, res) => {
     res.send(`
-        <form action="/contact" method="POST">
-            Nome: <input type="text" name="name">
-            <button type="submit">Enviar</button>
+        <form action="/" method="POST">
+            Nome do Cliente: <input type="text" name="name">
+            <button type="submit">Enviar Dados</button>
         </form>
     `);
 });
 
-app.post('/contact', (req, res) => {
-    res.send('Form recebido!');
+app.post('/', (req, res) => {
+    const username = req.body.name;
+    res.send(`Dado enviado: ${username}`);
 });
 
 app.listen(port, () => {

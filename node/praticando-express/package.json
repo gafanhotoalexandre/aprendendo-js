@@ -3,7 +3,7 @@
     "express": "^4.17.3"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "name": "praticando-express",
   "version": "1.0.0",
@@ -11,6 +11,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
   "description": ""
 }
