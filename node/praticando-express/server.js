@@ -6,7 +6,9 @@ const routes = require('./routes');
 
 const port = 3000;
 
+app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
