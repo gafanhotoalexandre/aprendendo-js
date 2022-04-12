@@ -1,5 +1,6 @@
-exports.contact = (req, res) => {
+exports.contact = (req, res, next) => {
     res.render('index');
+    next();
 }
 
 exports.contactAction = (req, res) => {
