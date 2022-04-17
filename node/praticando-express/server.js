@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const { globalMiddleware } = require('./src/middlewares/global');
 
 const routes = require('./routes');
 
@@ -12,6 +13,9 @@ app.use(express.urlencoded({ extended: true }));
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+
+// middlwares
+app.use(globalMiddleware);
 app.use(routes);
 
 app.listen(port, () => {
