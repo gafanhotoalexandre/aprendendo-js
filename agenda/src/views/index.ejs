@@ -1,3 +1,37 @@
 <%- include('includes/header') %>
-    <h1>Hello, myAgenda!</h1>
+<%- include('includes/nav') %>
+    <main class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+
+            <!-- My Content -->
+            <div class="col-lg-8 my-3">
+                <h1 class="display-1 text-center">myAgenda</h1>
+                <p class="text-center lead">Seus contatos estão listados abaixo.</p>
+
+                <div class="row">
+                    <div class="col my-3">
+                        <div class="alert alert-danger">Um erro</div>
+                    </div>
+                </div>
+
+                <section class="table-responsive">
+                    <table class="table my-3">
+                        <tbody>
+                            <% for(let i = 0; i < 4; i++) { %>
+                                <tr>
+                                    <td>Alexandre</td>
+                                    <td>Martins</td>
+                                    <td>88 8.8888-8888</td>
+                                    <td>ale@email.com</td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <div class="col-lg-2"></div>
+        </div>
+    </main>
 <%- include('includes/footer') %>
