@@ -18,9 +18,14 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 
-const routes = require('./routes');
-const { globalMiddleware } = require('./src/middlewares/globalMiddleware');
+const helmet = require('helmet');
+const csrf = require('csurf');
 
+const routes = require('./routes');
+const { globalMiddleware, checkCSRFError, csrfMiddleware } = require('./src/middlewares/globalMiddleware');
+
+// comentando utilização do helmet para evitar erros em ambiente localhost (de desenvolvimento)
+// app.use(helmet());
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 
@@ -42,7 +47,11 @@ app.use(flash());
 app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
+app.use(csrf());
+// meus middlewares
 app.use(globalMiddleware);
+app.use(checkCSRFError);
+app.use(csrfMiddleware);
 app.use(routes);
 
 app.on('ok', () => {

@@ -9,11 +9,13 @@
             <% } %>
         </h1>
 
-        <p>
-            <% numbers.forEach(num => { %>
-                <%= num %> - 
-            <% }); %>
-        </p>
+        <form action="/" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <p>
+                Cliente: <br>
+                <input type="text" name="name" id="name">
+            </p>
+        </form>
 
         <button id="main-btn">Ação</button>
 
