@@ -1,0 +1,23 @@
+<%- include('includes/header') %>
+
+    <section class="container">
+        <h1>
+            <% if (typeof title !== 'undefined') { %>
+                <%= title %>.
+            <% } else { %>
+                Sem título
+            <% } %>
+        </h1>
+
+        <p>
+            <% numbers.forEach(num => { %>
+                <%= num %> - 
+            <% }); %>
+        </p>
+
+        <button id="main-btn">Ação</button>
+
+        <div id="result"></div>
+    </section>
+
+<%- include('includes/footer') %>
