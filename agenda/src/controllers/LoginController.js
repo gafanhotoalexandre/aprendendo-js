@@ -8,5 +8,5 @@ exports.register = (req, res) => {
     const login = new Login(req.body);
     login.register();
 
-    res.send(login.body);
+    res.send(login.errors);
 };
