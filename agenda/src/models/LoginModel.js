@@ -31,6 +31,9 @@ class Login {
     validate() {
         this.cleanUp();
 
+        // nome
+        if (this.body.fullname.length < 3) this.errors.push('O nome deve possuir ao menos 3 caracteres.');
+
         // email valido, senha entre 3 e 50 caracteres
         if (! validator.isEmail(this.body.email)) this.errors.push('Email inválido!');
 
@@ -48,6 +51,7 @@ class Login {
 
         // definindo campos desejados
         this.body = {
+            fullname: this.body.fullname,
             email: this.body.email,
             password: this.body.password
         };
