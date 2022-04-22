@@ -10,6 +10,7 @@ router.get('/', HomeController.index);
 router.get('/login', LoginController.index);
 router.post('/login/register', LoginController.register);
 router.post('/login/do', LoginController.login);
+router.get('/login/logout', LoginController.logout);
 
 // exportando rotas
 module.exports = router;
