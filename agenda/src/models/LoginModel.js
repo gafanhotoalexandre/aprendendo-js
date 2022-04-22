@@ -16,6 +16,29 @@ class Login {
         this.user = null;
     }
 
+    async login() {
+        this.validate();
+        if (this.errors.length > 0) return;
+
+        this.user = await LoginModel.findOne({ email: this.body.email });
+
+        // usuário existe?
+        if (! this.user) {
+            this.errors.push('Usuário não existe');
+            return;
+        }
+
+        // verificando senha
+        if (! bcryptjs.compareSync(this.body.password, this.user.password)) {
+            this.errors.push('Usuário e/ou Senha inválidos.');
+            // retirando dados de usuário no caso da senha incorreta
+            this.user = null;
+
+            return;
+        }
+
+    }
+
     async register() {
         this.validate();
 
@@ -43,8 +66,8 @@ class Login {
     validate() {
         this.cleanUp();
 
-        // nome
-        if (this.body.fullname.length < 3) this.errors.push('O nome deve possuir ao menos 3 caracteres.');
+        // nome (se for enviado)
+        if (this.body.fullname && this.body.fullname.length < 3) this.errors.push('O nome deve possuir ao menos 3 caracteres.');
 
         // email valido, senha entre 3 e 50 caracteres
         if (! validator.isEmail(this.body.email)) this.errors.push('Email inválido!');
