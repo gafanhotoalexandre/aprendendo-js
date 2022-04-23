@@ -5,6 +5,8 @@ const HomeController = require('./src/controllers/HomeController');
 const LoginController = require('./src/controllers/LoginController');
 const ContactController = require('./src/controllers/ContactController');
 
+const { loginRequired } = require('./src/middlewares/globalMiddleware');
+
 router.get('/', HomeController.index);
 
 // rotas de login
@@ -14,7 +16,7 @@ router.post('/login/do', LoginController.login);
 router.get('/login/logout', LoginController.logout);
 
 // rotas de contato
-router.get('/contact', ContactController.index);
+router.get('/contato', loginRequired, ContactController.index);
 
 // exportando rotas
 module.exports = router;
