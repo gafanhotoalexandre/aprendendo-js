@@ -17,6 +17,7 @@ router.get('/login/logout', LoginController.logout);
 
 // rotas de contato
 router.get('/contato', loginRequired, ContactController.index);
+router.post('/contato/register', loginRequired, ContactController.register);
 
 // exportando rotas
 module.exports = router;
