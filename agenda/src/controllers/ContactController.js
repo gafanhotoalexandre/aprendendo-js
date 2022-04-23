@@ -38,4 +38,23 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
     if (! req.params.id) return res.render('404');
+
+    try {
+
+        const contact = new Contact(req.body);
+        await contact.update(req.params.id);
+
+        if (contact.errors.length > 0) {
+            req.flash('errors', contact.errors);
+            req.session.save(() => res.redirect('back'));
+            return;
+        }
+
+        req.flash('success', 'Contato atualizado com sucesso.');
+        req.session.save(() => res.redirect(`/contato/${contact.contact._id}`));
+        return;
+    } catch (e) {
+        console.log(e);
+        return res.render('404');
+    }
 };
