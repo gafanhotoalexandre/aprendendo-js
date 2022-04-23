@@ -35,3 +35,7 @@ exports.edit = async (req, res) => {
 
     res.render('contact', { contact });
 };
+
+exports.update = async (req, res) => {
+    if (! req.params.id) return res.render('404');
+};
