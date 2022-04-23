@@ -11,22 +11,26 @@
 
                 <%- include('includes/messages') %>
 
-                <section class="table-responsive">
-                    <table class="table my-3">
-                        <tbody>
-                            <% contacts.forEach(contact => { %>
-                                <tr>
-                                    <td><%= contact.name %></td>
-                                    <td><%= contact.surname %></td>
-                                    <td><%= contact.phone %></td>
-                                    <td><%= contact.email %></td>
-                                    <td><a href="/contato/<%= contact._id%>">Editar</a></td>
-                                    <td><a href="/contato/delete/<%= contact._id%>" class="text-danger">Excluir</a></td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                </section>
+                <% if (contacts.length > 0) { %>
+                    <section class="table-responsive">
+                        <table class="table my-3">
+                            <tbody>
+                                <% contacts.forEach(contact => { %>
+                                    <tr>
+                                        <td><%= contact.name %></td>
+                                        <td><%= contact.surname %></td>
+                                        <td><%= contact.phone %></td>
+                                        <td><%= contact.email %></td>
+                                        <td><a href="/contato/<%= contact._id %>">Editar</a></td>
+                                        <td><a href="/contato/delete/<%= contact._id %>" class="text-danger">Excluir</a></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </section>
+                <% } else { %>
+                    <p class="text-center lead">Não há contatos cadastrados.</p>
+                <% } %>
             </div>
 
             <div class="col-lg-2"></div>

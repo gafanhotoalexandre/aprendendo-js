@@ -22,6 +22,7 @@ router.post('/contato/register', loginRequired, ContactController.register);
 router.get('/contato/:id', loginRequired, ContactController.edit);
 router.post('/contato/edit/:id', loginRequired, ContactController.update);
 
+router.get('/contato/delete/:id', loginRequired, ContactController.delete);
 
 // exportando rotas
 module.exports = router;

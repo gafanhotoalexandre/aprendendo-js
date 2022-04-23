@@ -27,17 +27,17 @@ exports.register = async (req, res) => {
 };
 
 exports.edit = async (req, res) => {
-    if (! req.params.id) return res.render('404');
+    if (! req.params.id) return res.render('error');
 
     const contact = await Contact.findById(req.params.id);
 
-    if (! contact) return res.render('404');
+    if (! contact) return res.render('error');
 
     res.render('contact', { contact });
 };
 
 exports.update = async (req, res) => {
-    if (! req.params.id) return res.render('404');
+    if (! req.params.id) return res.render('error');
 
     try {
 
@@ -55,6 +55,17 @@ exports.update = async (req, res) => {
         return;
     } catch (e) {
         console.log(e);
-        return res.render('404');
+        return res.render('error');
     }
+};
+
+exports.delete = async (req, res) => {
+    if (! req.params.id) return res.render('error');
+
+    const contact = await Contact.delete(req.params.id);
+    if (! contact) return res.render('error');
+
+    req.flash('success', 'Seu contato foi excluído com sucesso.');
+    req.session.save(() => res.redirect('/'));
+    return;
 };

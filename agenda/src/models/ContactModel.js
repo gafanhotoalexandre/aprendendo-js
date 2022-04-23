@@ -31,6 +31,12 @@ Contact.all = async function () {
     return contacts;
 }
 
+Contact.delete = async function (id) {
+    if (typeof id !== 'string') return;
+    const contact = await ContactModel.findOneAndDelete({ _id: id });
+    return contact;
+}
+
 // prototypes
 Contact.prototype.register = async function () {
     this.validate();
