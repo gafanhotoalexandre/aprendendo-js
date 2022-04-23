@@ -17,7 +17,7 @@ function Contact (body) {
     this.contact = null;
 }
 
-// função estática
+// métodos estáticos
 Contact.findById = async function (id) {
     if (typeof id !== 'string') return;
 
@@ -25,6 +25,13 @@ Contact.findById = async function (id) {
     return contact;
 }
 
+Contact.all = async function () {
+    const contacts = await ContactModel.find()
+        .sort({ createdAt: -1 });// 1 crescente, -1 decrescente
+    return contacts;
+}
+
+// prototypes
 Contact.prototype.register = async function () {
     this.validate();
 
