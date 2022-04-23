@@ -19,5 +19,7 @@ router.get('/login/logout', LoginController.logout);
 router.get('/contato', loginRequired, ContactController.index);
 router.post('/contato/register', loginRequired, ContactController.register);
 
+router.get('/contato/:id', loginRequired, ContactController.edit);
+
 // exportando rotas
 module.exports = router;
