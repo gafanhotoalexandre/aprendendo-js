@@ -33,5 +33,7 @@ export default class Login {
             alert('Senha precisa ter entre 3 e 50 caracteres.');
             error = true;
         }
+
+        if (! error) el.submit();
     }
 }

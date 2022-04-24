@@ -22,7 +22,8 @@
                                         <td><%= contact.phone %></td>
                                         <td><%= contact.email %></td>
                                         <td><a href="/contato/<%= contact._id %>">Editar</a></td>
-                                        <td><a href="/contato/delete/<%= contact._id %>" class="text-danger">Excluir</a></td>
+                                        <td><a href="#" class="text-danger"
+                                            onclick="contact('/contato/delete/<%= contact._id %>')">Excluir</a></td>
                                     </tr>
                                 <% }) %>
                             </tbody>
@@ -36,4 +37,12 @@
             <div class="col-lg-2"></div>
         </div>
     </main>
+
+    <script>
+        const contact = (value) => {
+            if (window.confirm('Deseja apagar o contato?')) {
+                location.href = `${value}`;
+            }
+        }
+    </script>
 <%- include('includes/footer') %>
