@@ -13,12 +13,12 @@
 
                 <section class="row">
                     <%# Cadastro %>
-                    <div class="col-lg">
+                    <div class="col-lg my-5">
                         <h4>Faça seu Cadastro</h4>
 
                         <p>Se você ainda não tem uma conta, preencha o formulário abaixo</p>
 
-                        <form action="/login/register" method="POST">
+                        <form class="register-form" action="/login/register" method="POST">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <div class="form-group">
                                 <label>Seu Nome Completo</label>
@@ -38,12 +38,12 @@
                         </form>
                     </div>
                     <%# Login %>
-                    <div class="col-lg">
+                    <div class="col-lg my-5">
                         <h4>Entrar no Sistema</h4>
 
                         <p>Se você já tem uma conta, faça login no sistema abaixo.</p>
 
-                        <form action="/login/do" method="POST">
+                        <form class="login-form" action="/login/do" method="POST">
                             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                             <div class="form-group">
                                 <label>Seu E-mail</label>
