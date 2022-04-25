@@ -14,5 +14,6 @@ module.exports = {
     'no-console': 'off',
     'linebreak-style': ['error', 'windows'],
     'class-methods-use-this': 'off',
+    'import/first': 'off',
   },
 };
