@@ -5,10 +5,12 @@ import loginRequired from '../middlewares/loginRequired';
 
 const router = Router();
 
-router.get('/', loginRequired, userController.index);
-router.get('/:id', userController.show);
+// Rotas que não deveriam existir
+// router.get('/', loginRequired, userController.index);
+// router.get('/:id', userController.show);
+
 router.post('/', userController.store);
-router.put('/:id', userController.update);
-router.delete('/:id', userController.delete);
+router.put('/', loginRequired, userController.update);
+router.delete('/', loginRequired, userController.delete);
 
 export default router;
