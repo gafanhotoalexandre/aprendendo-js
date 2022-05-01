@@ -31,6 +31,9 @@ export default class Aluno extends Model {
             msg: 'E-mail inválido.',
           },
         },
+        unique: {
+          msg: 'O e-mail informado já foi cadastrado',
+        },
       },
       age: {
         type: Sequelize.INTEGER,
