@@ -1,10 +1,15 @@
 import Aluno from '../models/Aluno';
+import Photo from '../models/Photo';
 
 class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
       attributes: ['id', 'name', 'lastname', 'email', 'age', 'weight', 'height'],
-      order: [['id', 'DESC']],
+      order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+      include: {
+        model: Photo,
+        attributes: ['filename'],
+      },
     });
     res.json(alunos);
   }
