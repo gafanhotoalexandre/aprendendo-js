@@ -34,7 +34,14 @@ class AlunoController {
         });
       }
 
-      const aluno = await Aluno.findByPk(id);
+      const aluno = await Aluno.findByPk(id, {
+        attributes: ['id', 'name', 'lastname', 'email', 'age', 'weight', 'height'],
+        order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+        include: {
+          model: Photo,
+          attributes: ['filename'],
+        },
+      });
       if (!aluno) {
         return res.status(404).json({
           errors: ['Aluno não encontrado.'],
