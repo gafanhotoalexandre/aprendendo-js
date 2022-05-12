@@ -10,7 +10,7 @@ import './Main.css';
 
 export function Main() {
   const [newTask, setNewTask] = useState('');
-  const [tasks, setTasks] = useState([
+  const [tasks] = useState([
     'Fazer café', 'Beber água', 'Estudar',
   ]);
 
@@ -36,8 +36,8 @@ export function Main() {
             { task }
 
             <div>
-              <FaEdit />
-              <FaWindowClose />
+              <FaEdit className="edit" />
+              <FaWindowClose className="delete" />
             </div>
           </li>
         )) }
