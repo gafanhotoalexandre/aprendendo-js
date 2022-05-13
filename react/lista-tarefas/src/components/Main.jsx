@@ -10,15 +10,21 @@ import './Main.css';
 
 export function Main() {
   const [newTask, setNewTask] = useState('');
-  const [tasks] = useState([
-    'Fazer café', 'Beber água', 'Estudar',
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (tasks.indexOf(newTask.trim()) !== -1) return;
+
+    setTasks((prevState) => [...prevState, newTask]);
+  }
 
   return (
     <div className="main">
       <h1>Lista de Tarefas</h1>
 
-      <form action="#" className="form">
+      <form onSubmit={handleSubmit} action="#" className="form">
         <input
           type="text"
           onChange={(e) => setNewTask(e.target.value)}
@@ -35,10 +41,10 @@ export function Main() {
           <li key={task}>
             { task }
 
-            <div>
+            <span>
               <FaEdit className="edit" />
               <FaWindowClose className="delete" />
-            </div>
+            </span>
           </li>
         )) }
       </ul>

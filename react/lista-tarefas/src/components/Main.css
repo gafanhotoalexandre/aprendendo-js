@@ -80,3 +80,8 @@
   color: #fff;
   transition: .15s;
 }
+
+.tasks li span {
+  display: flex;
+  align-items: center;
+}
