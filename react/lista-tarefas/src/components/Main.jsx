@@ -1,9 +1,7 @@
 import { useState } from 'react';
 
-// Tasks
-import { FaEdit, FaWindowClose } from 'react-icons/fa';
-
 import { Form } from './Form';
+import { Tasks } from './Tasks';
 
 import './Main.css';
 
@@ -49,24 +47,11 @@ export function Main() {
         newTask={newTask}
       />
 
-      <ul className="tasks">
-        { tasks.map((task, index) => (
-          <li key={task}>
-            { task }
-
-            <span>
-              <FaEdit
-                onClick={(event) => handleEdit(event, index)}
-                className="edit"
-              />
-              <FaWindowClose
-                onClick={(event) => handleDelete(event, index)}
-                className="delete"
-              />
-            </span>
-          </li>
-        )) }
-      </ul>
+      <Tasks
+        tasks={tasks}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }
