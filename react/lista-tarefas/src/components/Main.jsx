@@ -1,10 +1,9 @@
 import { useState } from 'react';
 
-// Form
-import { FaPlus } from 'react-icons/fa';
-
 // Tasks
 import { FaEdit, FaWindowClose } from 'react-icons/fa';
+
+import { Form } from './Form';
 
 import './Main.css';
 
@@ -44,17 +43,11 @@ export function Main() {
     <div className="main">
       <h1>Lista de Tarefas</h1>
 
-      <form onSubmit={handleSubmit} action="#" className="form">
-        <input
-          type="text"
-          onChange={(e) => setNewTask(e.target.value)}
-          value={newTask}
-        />
-
-        <button type="submit">
-          <FaPlus />
-        </button>
-      </form>
+      <Form
+        handleSubmit={handleSubmit}
+        setNewTask={setNewTask}
+        newTask={newTask}
+      />
 
       <ul className="tasks">
         { tasks.map((task, index) => (
