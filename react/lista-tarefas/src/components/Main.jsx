@@ -11,17 +11,28 @@ import './Main.css';
 export function Main() {
   const [newTask, setNewTask] = useState('');
   const [tasks, setTasks] = useState([]);
+  const [taskIndex, setTaskIndex] = useState(-1);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     if (tasks.indexOf(newTask.trim()) !== -1) return;
 
-    setTasks((prevState) => [...prevState, newTask]);
+    if (taskIndex === -1) {
+      setTasks((prevState) => [...prevState, newTask]);
+      setNewTask('');
+    } else {
+      tasks[taskIndex] = newTask;
+      setTasks(() => [...tasks]);
+
+      setNewTask('');
+      setTaskIndex(-1);
+    }
   }
 
   function handleEdit(event, index) {
-    console.log('Edit', index);
+    setNewTask(tasks[index]);
+    setTaskIndex(index);
   }
 
   function handleDelete(event, index) {
