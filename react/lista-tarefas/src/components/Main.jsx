@@ -20,6 +20,15 @@ export function Main() {
     setTasks((prevState) => [...prevState, newTask]);
   }
 
+  function handleEdit(event, index) {
+    console.log('Edit', index);
+  }
+
+  function handleDelete(event, index) {
+    tasks.splice(index, 1);
+    setTasks(() => [...tasks]);
+  }
+
   return (
     <div className="main">
       <h1>Lista de Tarefas</h1>
@@ -37,13 +46,19 @@ export function Main() {
       </form>
 
       <ul className="tasks">
-        { tasks.map((task) => (
+        { tasks.map((task, index) => (
           <li key={task}>
             { task }
 
             <span>
-              <FaEdit className="edit" />
-              <FaWindowClose className="delete" />
+              <FaEdit
+                onClick={(event) => handleEdit(event, index)}
+                className="edit"
+              />
+              <FaWindowClose
+                onClick={(event) => handleDelete(event, index)}
+                className="delete"
+              />
             </span>
           </li>
         )) }
