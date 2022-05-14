@@ -1,13 +1,16 @@
 import { Login } from './pages/Login';
-import GlobalStyles, { Container } from './styles/GlobalStyles';
+import { Header } from './components/Header';
+
+import GlobalStyles from './styles/GlobalStyles';
 
 export function App() {
   return (
-    <Container>
+    <>
+      <Header />
+
       <h1>Hello World</h1>
       <Login />
       <GlobalStyles />
-      <button type="button">Clique aqui</button>
-    </Container>
+    </>
   );
 }
